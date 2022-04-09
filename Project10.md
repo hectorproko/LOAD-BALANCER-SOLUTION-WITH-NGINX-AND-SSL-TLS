@@ -91,15 +91,11 @@ certbot 1.20.0 from Certbot Project (certbot-eff✓) installed
 ubuntu@ip-172-31-91-30:~$
 ```
 
-### Request your certificate   
-https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal
+### Request your certificate [certbot instructions](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal) 
 
-
-
-
-```
-sudo ln -s /snap/bin/certbot /usr/bin/certbot  (created symbolic link)
-sudo certbot --nginx
+``` bash
+sudo ln -s /snap/bin/certbot /usr/bin/certbot  #created symbolic link
+sudo certbot --nginx #get a certificate and have Certbot edit your nginx configuration automatically to serve it, turning on HTTPS access in a single step.
 ```
 
 Test secured access to your Web Solution by trying to reach https://<your-domain-name.com>
