@@ -166,7 +166,7 @@ To do so, lets edit the crontab file with the following command:
 ``` 
 crontab -e
 ```
-Add following line:  
+we add the following line:  
 ``` bash
 * */12 * * *   root /usr/bin/certbot renew > /dev/null 2>&1 
 ```
