@@ -55,10 +55,48 @@ server {
 
 ## Register a new domain name and configure secured connection using SSL/TLS certificates
 Let us make necessary configurations to make connections to our Tooling Web Solution secured!
-In order to get a valid SSL certificate – you need to register a new domain name, you can do it using any Domain name registrar – a company that manages reservation of domain names. The most popular ones are: Godaddy.com, Domain.com, Bluehost.com.
-	1. Register a new domain name with any registrar of your choice in any domain zone (e.g. .com, .net, .org, .edu, .info, .xyz or any other)
-	2. Assign an Elastic IP to your Nginx LB server and associate your domain name with this Elastic IP
-	
-You might have noticed, that every time you restart or stop/start your EC2 instance – you get a new public IP address. When you want to associate your domain name – it is better to have a static IP address that does not change after reboot. Elastic IP is the solution for this problem, learn how to allocate an Elastic IP and associate it with an EC2 server on this page.
-	3. Update A record in your registrar to point to Nginx LB using Elastic IP address
-Learn how associate your domain name to your Elastic IP on this page.
+In order to get a valid SSL certificate – you need to register a new domain name. I registered hectorsdomainforproject.de
+
+Assign an Elastic IP to your Nginx LB server and associate your domain name with this Elastic IP. To avoid new public ip after restart
+ ## elasticip.png  
+ ## elasticip2.png 
+
+
+Update A record in your registrar to point to Nginx LB using Elastic IP address
+## image: mydomains.png
+
+
+
+Configure Nginx to recognize your new domain name
+Update your nginx.conf with server_name www.<your-domain-name.com> instead of server_name www.domain.com
+```bash
+server {
+    server_name www.hectorsdomainforproject.de;
+    location / {
+      proxy_pass http://myproject;
+    }
+```
+Make sure [snapd](https://snapcraft.io/snapd) service is active and running.
+```
+sudo systemctl status snapd
+```
+
+Install **certbot** and request for an **SSL/TLS** certificate
+
+``` perl
+ubuntu@ip-172-31-91-30:~$ sudo snap install --classic certbot
+certbot 1.20.0 from Certbot Project (certbot-eff✓) installed
+ubuntu@ip-172-31-91-30:~$
+```
+
+Request your certificate (just follow the certbot instructions – you will need to choose which domain you want your certificate to be issued for, domain name will be looked up from nginx.conf file so make sure you have updated it on step 4).
+https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx
+
+```
+sudo ln -s /snap/bin/certbot /usr/bin/certbot  (created symbolic link)
+sudo certbot --nginx
+```
+
+Test secured access to your Web Solution by trying to reach https://<your-domain-name.com>
+You shall be able to access your website by using HTTPS protocol (that uses TCP port 443) and see a padlock pictogram in your browser’s search string.
+Click on the padlock icon and you can see the details of the certificate issued for your website.
