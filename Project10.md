@@ -58,14 +58,12 @@ Let us make necessary configurations to make connections to our Tooling Web Solu
 In order to get a valid SSL certificate – you need to register a new domain name. I registered hectorsdomainforproject.de
 
 Assign an Elastic IP to your Nginx LB server and associate your domain name with this Elastic IP. To avoid new public ip after restart
- ## elasticip.png  
- ## elasticip2.png 
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LOAD-BALANCER-SOLUTION-WITH-NGINX-AND-SSL-TLS/main/images/elasticip.png)  
 
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LOAD-BALANCER-SOLUTION-WITH-NGINX-AND-SSL-TLS/main/images/elasticip2.png)  
 
 Update A record in your registrar to point to Nginx LB using Elastic IP address
-## image: mydomains.png
-
-
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LOAD-BALANCER-SOLUTION-WITH-NGINX-AND-SSL-TLS/main/images/mydomains.png)  
 
 Configure Nginx to recognize your new domain name
 Update your nginx.conf with server_name www.<your-domain-name.com> instead of server_name www.domain.com. When requesting
@@ -134,12 +132,10 @@ Testing secure access to the Web Solution by trying to reach
 *https:/hectorsdomainforproject.de* 
 
 We can see a lock icon in the browser’s search string.
-### image site
-
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LOAD-BALANCER-SOLUTION-WITH-NGINX-AND-SSL-TLS/main/images/site.png)  
 By clicking on the lock icon we see the details of the certificate issued for the website.
 
-### image certificate  
-
+![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LOAD-BALANCER-SOLUTION-WITH-NGINX-AND-SSL-TLS/main/images/certificate.png)    
 
 By default, **LetsEncrypt** certificate is valid for 90 days, so it is recommended to renew it at least every 60 days or more frequently.  
 
