@@ -132,6 +132,7 @@ Testing secure access to the Web Solution by trying to reach
 *https:/hectorsdomainforproject.de* 
 
 We can see a lock icon in the browser’s search string.  
+
 ![Markdown Logo](https://raw.githubusercontent.com/hectorproko/LOAD-BALANCER-SOLUTION-WITH-NGINX-AND-SSL-TLS/main/images/site.png)  
 By clicking on the lock icon we see the details of the certificate issued for the website.
 
