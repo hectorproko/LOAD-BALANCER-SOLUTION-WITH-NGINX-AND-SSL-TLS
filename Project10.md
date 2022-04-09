@@ -101,3 +101,34 @@ sudo certbot --nginx #get a certificate and have Certbot edit your nginx configu
 Test secured access to your Web Solution by trying to reach https://<your-domain-name.com>
 You shall be able to access your website by using HTTPS protocol (that uses TCP port 443) and see a padlock pictogram in your browser’s search string.
 Click on the padlock icon and you can see the details of the certificate issued for your website.
+
+``` bash
+ubuntu@ip-172-31-91-30:/etc/nginx$ sudo certbot --nginx
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+Which names would you like to activate HTTPS for?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: www.hectorsdomainforproject.de
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to select all options shown (Enter 'c' to cancel):
+Requesting a certificate for www.hectorsdomainforproject.de
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/www.hectorsdomainforproject.de/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/www.hectorsdomainforproject.de/privkey.pem
+This certificate expires on 2022-01-16.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+Deploying certificate
+Successfully deployed certificate for www.hectorsdomainforproject.de to /etc/nginx/nginx.conf
+Congratulations! You have successfully enabled HTTPS on https://www.hectorsdomainforproject.de
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+If you like Certbot, please consider supporting our work by:
+ * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+ * Donating to EFF:                    https://eff.org/donate-le
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ubuntu@ip-172-31-91-30:/etc/nginx$
+```
