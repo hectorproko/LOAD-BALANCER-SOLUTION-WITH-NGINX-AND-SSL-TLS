@@ -68,7 +68,9 @@ Update A record in your registrar to point to Nginx LB using Elastic IP address
 
 
 Configure Nginx to recognize your new domain name
-Update your nginx.conf with server_name www.<your-domain-name.com> instead of server_name www.domain.com
+Update your nginx.conf with server_name www.<your-domain-name.com> instead of server_name www.domain.com. When requesting
+
+
 ```bash
 server {
     server_name www.hectorsdomainforproject.de;
@@ -89,8 +91,11 @@ certbot 1.20.0 from Certbot Project (certbot-eff✓) installed
 ubuntu@ip-172-31-91-30:~$
 ```
 
-Request your certificate (just follow the certbot instructions – you will need to choose which domain you want your certificate to be issued for, domain name will be looked up from nginx.conf file so make sure you have updated it on step 4).
-https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx
+### Request your certificate   
+https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal
+
+
+
 
 ```
 sudo ln -s /snap/bin/certbot /usr/bin/certbot  (created symbolic link)
