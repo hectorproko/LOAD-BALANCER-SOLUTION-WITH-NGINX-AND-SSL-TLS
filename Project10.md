@@ -91,7 +91,7 @@ certbot 1.20.0 from Certbot Project (certbot-eff✓) installed
 ubuntu@ip-172-31-91-30:~$
 ```
 
-### Request your certificate [certbot instructions](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal) 
+#### Request your certificate [certbot instructions](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal) 
 
 ``` bash
 sudo ln -s /snap/bin/certbot /usr/bin/certbot  #created symbolic link
