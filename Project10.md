@@ -98,10 +98,6 @@ sudo ln -s /snap/bin/certbot /usr/bin/certbot  #created symbolic link
 sudo certbot --nginx #get a certificate and have Certbot edit your nginx configuration automatically to serve it, turning on HTTPS access in a single step.
 ```
 
-Test secured access to your Web Solution by trying to reach https://<your-domain-name.com>
-You shall be able to access your website by using HTTPS protocol (that uses TCP port 443) and see a padlock pictogram in your browser’s search string.
-Click on the padlock icon and you can see the details of the certificate issued for your website.
-
 ``` bash
 ubuntu@ip-172-31-91-30:/etc/nginx$ sudo certbot --nginx
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
@@ -131,4 +127,46 @@ If you like Certbot, please consider supporting our work by:
  * Donating to EFF:                    https://eff.org/donate-le
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ubuntu@ip-172-31-91-30:/etc/nginx$
+```
+
+
+Testing secure access to the Web Solution by trying to reach  
+*https:/hectorsdomainforproject.de* 
+
+We can see a lock icon in the browser’s search string.
+### image site
+
+By clicking on the lock icon we see the details of the certificate issued for the website.
+
+### image certificate  
+
+
+By default, **LetsEncrypt** certificate is valid for 90 days, so it is recommended to renew it at least every 60 days or more frequently.  
+
+You can test renewal command in **dry-run mode**
+``` bash
+ubuntu@ip-172-31-91-30:/etc/nginx$ sudo certbot renew --dry-run
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Processing /etc/letsencrypt/renewal/www.hectorsdomainforproject.de.conf
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Account registered.
+Simulating renewal of an existing certificate for www.hectorsdomainforproject.de
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations, all simulated renewals succeeded:
+  /etc/letsencrypt/live/www.hectorsdomainforproject.de/fullchain.pem (success)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ubuntu@ip-172-31-91-30:/etc/nginx$
+```
+
+Best practice is to have a scheduled job that runs **renew command** periodically. We can configure a **cronjob** to run the command twice a day.
+To do so, lets edit the crontab file with the following command:
+``` 
+crontab -e
+```
+Add following line:  
+``` bash
+* */12 * * *   root /usr/bin/certbot renew > /dev/null 2>&1 
 ```
